@@ -13,3 +13,7 @@
 #Current {
     float: right;
 }
+.UV {
+    border-style: solid;
+    border-radius: 5px
+}
