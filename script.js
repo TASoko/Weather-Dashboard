@@ -73,16 +73,26 @@ $(document).ready(function () {
             $(".wind1").text("Wind Speed: " + response.list[8].wind.speed + " MPH ");
             $(".humidity1").text("Humidity: " + response.list[8].main.humidity + " % ");
             $(".tempF1").text("Temperature (F) " + tempF.toFixed(2));
+        
+
+            $(".wind2").text("Wind Speed: " + response.list[15].wind.speed + " MPH ");
+          
 
 
             // console.log("Wind Speed: " + response.time.wind.speed);
             // console.log("Humidity: " + response.main.humidity);
-            let str = "";
-            var arr = [];
-        for (var i=0; i<response.list.length;i+8){
-           arr.push(i)
+
+        let forecast = [];
+        for (var i=8; i<=response.list.length;i += 8){
+           forecast.push(i);
         }
-        console.log(arr)
+        
+        console.log(forecast)
+        for (var i=0; i<forecast.length; i++) {
+             $("#card1")
+         }
+        $(".wind3").text("Wind Speed: " + response.list[forecast[2]].wind.speed + " MPH ");
+
 
 
             //for loop to grab for time of the date called - filtering
