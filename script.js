@@ -68,22 +68,9 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response)
             console.log(response.list)
-            var tempF = (response.list[8].main.temp - 273.15) * 1.80 + 32;
-
-            $(".wind1").text("Wind Speed: " + response.list[8].wind.speed + " MPH ");
-            $(".humidity1").text("Humidity: " + response.list[8].main.humidity + " % ");
-            $(".tempF1").text("Temperature (F) " + tempF.toFixed(2));
-        
-
-            $(".wind2").text("Wind Speed: " + response.list[15].wind.speed + " MPH ");
-          
-
-
-            // console.log("Wind Speed: " + response.time.wind.speed);
-            // console.log("Humidity: " + response.main.humidity);
-
+    
         let forecast = [];
-        for (var i=8; i<=response.list.length;i += 8){
+        for (var i=0; i<=response.list.length;i += 8){
            forecast.push(i);
         }
         
@@ -91,8 +78,30 @@ $(document).ready(function () {
         for (var i=0; i<forecast.length; i++) {
              $("#card1")
          }
-        $(".wind3").text("Wind Speed: " + response.list[forecast[2]].wind.speed + " MPH ");
+         var tempF = (response.list[forecast[0]].main.temp - 273.15) * 1.80 + 32;
 
+         $(".wind1").text("Wind Speed: " + response.list[forecast[0]].wind.speed + " MPH ");
+         $(".humidity1").text("Humidity: " + response.list[forecast[0]].main.humidity + " % ");
+         $(".tempF1").text("Temperature (F) " + tempF.toFixed(2));
+     
+
+         $(".wind2").text("Wind Speed: " + response.list[forecast[1]].wind.speed + " MPH ");
+         $(".humidity2").text("Humidity: " + response.list[forecast[1]].main.humidity + " % ");
+
+       
+       
+         $(".wind3").text("Wind Speed: " + response.list[forecast[2]].wind.speed + " MPH ");
+         $(".humidity3").text("Humidity: " + response.list[forecast[2]].main.humidity + " % ");
+
+
+
+         $(".wind4").text("Wind Speed: " + response.list[forecast[3]].wind.speed + " MPH ");
+         $(".humidity4").text("Humidity: " + response.list[forecast[3]].main.humidity + " % ");
+
+
+
+         $(".wind5").text("Wind Speed: " + response.list[forecast[4]].wind.speed + " MPH ");
+         $(".humidity5").text("Humidity: " + response.list[forecast[4]].main.humidity + " % ");
 
 
             //for loop to grab for time of the date called - filtering
