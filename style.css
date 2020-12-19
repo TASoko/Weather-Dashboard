@@ -14,17 +14,37 @@
     float: right;
 }
 .low{
+    /* border:solid green 5px;
+    border-radius: 5px;
+    padding: 5px; */
+    width: 130px;
     background-color: green;
 }
 .moderate{
+    /* border: solid yellow 5px;
+    border-radius: 5px;
+    padding: 5px; */
+    width: 130px;
     background-color: yellow;
 }
 .high {
+    /* border: solid orange 5px;
+    border-radius: 5px;
+    padding: 5px; */
+    width: 130px;
     background-color: orange;
 }
 .very-high {
+    /* border: solid red 5px;
+    border-radius: 5px;
+    padding: 5px; */
+    width: 130px;
     background-color: red;
 }
 .extreme {
+    /* border: solid violet 5px;
+    border-radius: 5px;
+    padding: 5px; */
+    width: 130px;
     background-color: violet;
 }
