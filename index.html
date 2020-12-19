@@ -32,23 +32,31 @@
     <div class="row">
       <!--Side navbar -->
       <aside class="col-md-3 blog-sidebar">
-        <div class="p-4" id="Psearched">
+        <div class="row">
+          <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"></a>
+              <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+              <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+            </div>
+          </div>
+          <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
+              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="p-4" id="Psearched">
           <h4 class="font-italic">Previously Searched</h4>
           <ol class="list-unstyled mb-0">
             <li><a href="#">March 2014</a></li>
             <li><a href="#">February 2014</a></li>
-            <li><a href="#">January 2014</a></li>
-            <li><a href="#">December 2013</a></li>
-            <li><a href="#">November 2013</a></li>
-            <li><a href="#">October 2013</a></li>
-            <li><a href="#">September 2013</a></li>
-            <li><a href="#">August 2013</a></li>
-            <li><a href="#">July 2013</a></li>
-            <li><a href="#">June 2013</a></li>
-            <li><a href="#">May 2013</a></li>
-            <li><a href="#">April 2013</a></li>
           </ol>
-        </div>
+        </div> -->
       </aside>
       <div class="col-md-9">
         <!--Card to show the current city-->
@@ -58,10 +66,9 @@
             <div class="col p-4 d-flex flex-column position-static">
               <h3 class="mb-0 city">Post title</h3>
               <div class="mb-1 text-muted" id="currentDay">Nov 11</div>
-              <p class="mb-auto">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content.
-              </p>
+               <p class="mb-auto">
+                                                                                               
+              </p> 
               <!-- <div class="city"></div> -->
               <div class="wind"></div>
               <div class="humidity"></div>
@@ -80,6 +87,7 @@
             </div>
           </div>
         </div>
+      </div>
 
         <!--The card to put 5 day weather forecast-->
         <div class="5-Day-Cards">
@@ -151,7 +159,7 @@
             </div>
           </div>
         </div>
-      </div>
+     
     </div>
   </div>
 
