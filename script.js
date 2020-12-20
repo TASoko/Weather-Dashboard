@@ -31,17 +31,23 @@ $(document).ready(function () {
       console.log(tempF);
 
     //   //   var inputBtn = $("<button>");
-    //   var link = $("<nav-link>");
+    var link = $("<nav>");
     //   //link.attr("href", "#");
-    //   link.text(response.name);
-    //   link.addClass("linkName");
+     link.text(response.name);
+     link.addClass("linkName");
 
-    //   //   $("#Psearched").append(inputBtn);
-    //   $("#v-pills-home-tab").append(link);
+    $("#v-pills-home-tab").append(link);
+    if (response.name !== cityName ){
+
+    } 
+      
+
+      // $("#Psearched").append(inputBtn);
+      //  $("#v-pills-tab").append(link);
 
       //   inputBtn.text(response.name);
       //   inputBtn.addClass("searchBar");
-      //   $("#Psearched").empty();
+        // $("#Psearched").empty();
 
       $(".city").html("<h1>" + response.name + " Weather Details</h1>");
       $(".wind").text("Wind Speed: " + response.wind.speed + " MPH ");
@@ -179,16 +185,16 @@ $(document).ready(function () {
   });
 
   // var searchBtn = $(".searchBar");
-  var linkN = $(".linkName");
+  // var linkN = $(".linkName");
 
-  linkN.click(function (e) {
-    alert("Button is good");
-    e.preventDefault();
+  // linkN.click(function (e) {
+  //   alert("Button is good");
+  //   e.preventDefault();
 
-    // var city = $("#cityValue").val().trim();
-    // console.log("#cityValue");
-    // render ();
-  });
+  //   var city = $("#cityValue").val().trim();
+  //   console.log("#cityValue");
+  //   render ();
+  // });
 }
 });
 //var prevS = $("#Psearched").val();
