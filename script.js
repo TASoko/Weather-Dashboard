@@ -1,5 +1,6 @@
 $(document).ready(function () {
   function naturalstate() {
+    console.log("Javascript is running")
     var lastSearched = localStorage.getItem("lastSearched");
     if (lastSearched !== null) {
       $("#cityValue").val(lastSearched);
