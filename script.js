@@ -1,12 +1,14 @@
 $(document).ready(function () {
   function naturalstate() {
-    console.log("Javascript is running")
+    console.log("Javascript is running");
     var lastSearched = localStorage.getItem("lastSearched");
     if (lastSearched !== null) {
       $("#cityValue").val(lastSearched);
       render();
-    } 
+    }
   }
+  console.log('before first function call')
+  render();
   naturalstate();
   $("#currentDay").text(
     luxon.DateTime.local().toLocaleString({
@@ -17,7 +19,7 @@ $(document).ready(function () {
   );
 
   function render() {
-    var cityName = $("#cityValue").val();
+    var cityName = $("#cityValue").val() || "Atlanta";
 
     var APIkey = "ca7397c46053898d7c12dc596fd7cf71";
     //eventually this will be what the user types in
@@ -31,24 +33,22 @@ $(document).ready(function () {
       var tempF = (response.main.temp - 273.15) * 1.8 + 32;
       console.log(tempF);
 
-    //   //   var inputBtn = $("<button>");
-    var link = $("<nav>");
-    //   //link.attr("href", "#");
-     link.text(response.name);
-     link.addClass("linkName");
+      //   //   var inputBtn = $("<button>");
+      var link = $("<nav>");
+      //   //link.attr("href", "#");
+      link.text(response.name);
+      link.addClass("linkName");
 
-    $("#v-pills-home-tab").append(link);
-    if (response.name !== cityName ){
-
-    } 
-      
+      $("#v-pills-home-tab").append(link);
+      if (response.name !== cityName) {
+      }
 
       // $("#Psearched").append(inputBtn);
       //  $("#v-pills-tab").append(link);
 
       //   inputBtn.text(response.name);
       //   inputBtn.addClass("searchBar");
-        // $("#Psearched").empty();
+      // $("#Psearched").empty();
 
       $(".city").html("<h1>" + response.name + " Weather Details</h1>");
       $(".wind").text("Wind Speed: " + response.wind.speed + " MPH ");
@@ -69,7 +69,7 @@ $(document).ready(function () {
       var lat = response.coord.lat;
       var lon = response.coord.lon;
 
-      var queryURL1 = `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${APIkey}`;
+      var queryURL1 = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${APIkey}`;
 
       $.ajax({
         method: "GET",
@@ -111,22 +111,21 @@ $(document).ready(function () {
           UVindexEl.removeClass("very-high");
           UVindexEl.addClass("extreme");
         }
-        });
+      });
     });
 
-      // var queryURL3 = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,daily,alerts&appid=${APIkey}`
-      // $.ajax ({
-      //     method: "GET",
-      //     url: queryURL3
-      // }).then (function (response){
-      //     console.log(response);
-      //     for (i = 0; i<5; i++){
+    // var queryURL3 = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,daily,alerts&appid=${APIkey}`
+    // $.ajax ({
+    //     method: "GET",
+    //     url: queryURL3
+    // }).then (function (response){
+    //     console.log(response);
+    //     for (i = 0; i<5; i++){
 
-      //     }
-      // })
-    
+    //     }
+    // })
 
-    var queryURL2 = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${APIkey}`;
+    var queryURL2 = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${APIkey}`;
 
     $.ajax({
       method: "GET",
@@ -145,13 +144,15 @@ $(document).ready(function () {
       for (var i = 0; i < forecast.length; i++) {
         console.log(i);
         //forecast.forEach(function ())
-        var date = new Date(response.list[forecast[i]].dt*1000).toLocaleDateString('en-US',{
-          month:'2-digit',
-          day: '2-digit',
-          year: 'numeric',
-        })
+        var date = new Date(
+          response.list[forecast[i]].dt * 1000
+        ).toLocaleDateString("en-US", {
+          month: "2-digit",
+          day: "2-digit",
+          year: "numeric",
+        });
         $(".card-body" + i).append(`
-        <h5 class="card-title">${date}</h5>`)
+        <h5 class="card-title">${date}</h5>`);
 
         var tempF = (response.list[forecast[i]].main.temp - 273.15) * 1.8 + 32;
 
@@ -169,47 +170,45 @@ $(document).ready(function () {
         var iconURL = "https://openweathermap.org/img/w/" + icon + ".png";
 
         $("#icon" + i).attr("src", iconURL);
-
-      
       }
     });
-   
 
-//   };
+    //   };
 
-  var initialBtn = $(".initialBtn");
-  initialBtn.on("click", function (event) {
-    localStorage.setItem("lastSearched", $("#cityValue").val());
+    var initialBtn = $(".initialBtn");
+    initialBtn.on("click", function (event) {
+      console.log("Clicked!");
+      localStorage.setItem("lastSearched", $("#cityValue").val());
 
-    event.preventDefault();
-    render();
-    
-    //});
-  });
+      event.preventDefault();
+      render();
 
-  // function display (){
-  //   var cityscreen = $(".tab-pane");
-  //   if (cityscreen.style.display === "none"){
-  //     cityscreen.style.display = "block";
-  //   }else {
-  //     cityscreen.display = "none";
-  //   }
-  //   render ();
-  // }
-  // display ()
+      //});
+    });
 
-  // var searchBtn = $(".searchBar");
-  // var linkN = $(".linkName");
+    // function display (){
+    //   var cityscreen = $(".tab-pane");
+    //   if (cityscreen.style.display === "none"){
+    //     cityscreen.style.display = "block";
+    //   }else {
+    //     cityscreen.display = "none";
+    //   }
+    //   render ();
+    // }
+    // display ()
 
-  // linkN.click(function (e) {
-  //   alert("Button is good");
-  //   e.preventDefault();
+    // var searchBtn = $(".searchBar");
+    // var linkN = $(".linkName");
 
-  //   var city = $("#cityValue").val().trim();
-  //   console.log("#cityValue");
-  //   render ();
-  // });
-}
+    // linkN.click(function (e) {
+    //   alert("Button is good");
+    //   e.preventDefault();
+
+    //   var city = $("#cityValue").val().trim();
+    //   console.log("#cityValue");
+    //   render ();
+    // });
+  }
 });
 //var prevS = $("#Psearched").val();
 //if cityName === prevS {
