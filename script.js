@@ -4,7 +4,7 @@ $(document).ready(function () {
     if (lastSearched !== null) {
       $("#cityValue").val(lastSearched);
       render();
-    }
+    } 
   }
   naturalstate();
   $("#currentDay").text(
@@ -179,10 +179,23 @@ $(document).ready(function () {
   var initialBtn = $(".initialBtn");
   initialBtn.on("click", function (event) {
     localStorage.setItem("lastSearched", $("#cityValue").val());
+
     event.preventDefault();
     render();
+    
     //});
   });
+
+  // function display (){
+  //   var cityscreen = $(".tab-pane");
+  //   if (cityscreen.style.display === "none"){
+  //     cityscreen.style.display = "block";
+  //   }else {
+  //     cityscreen.display = "none";
+  //   }
+  //   render ();
+  // }
+  // display ()
 
   // var searchBtn = $(".searchBar");
   // var linkN = $(".linkName");
